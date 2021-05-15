@@ -13,6 +13,7 @@
         <module>springcloud-alibaba-user</module>
         <module>springcloud-alibaba-product</module>
         <module>springcloud-alibaba-order</module>
+        <module>springcloud-alibaba-gateway</module>
     </modules>
 
     <parent>
