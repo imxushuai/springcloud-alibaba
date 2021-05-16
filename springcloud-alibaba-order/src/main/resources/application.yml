@@ -26,3 +26,7 @@ spring:
         port: 8719
         # web 控制台地址
         dashboard: localhost:18080
+feign:
+  sentinel:
+    # 开启sentinel支持
+    enabled: true
