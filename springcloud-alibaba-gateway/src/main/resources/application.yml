@@ -29,3 +29,24 @@ spring:
             # 转发之前去掉1层路径
             - StripPrefix=1
 #            - Log=true,false
+        - id: order_route
+          # 请求要转发到的地址
+          uri: lb://service-order
+          # 路由的优先级,数字越小级别越高
+          order: 1
+          # 断言(就是路由转发要满足的条件)
+          predicates:
+            # 当请求路径满足Path指定的规则时,才进行路由转发
+            - Path=/order-serv/**
+#            - Age=20,80
+          # 过滤器,请求在传递过程中可以通过过滤器对其进行一定的修改
+          filters:
+            # 转发之前去掉1层路径
+            - StripPrefix=1
+#            - Log=true,false
+  zipkin:
+    base-url: http://192.168.149.101:9411/
+    discoveryClientEnabled: false #让nacos把它当成一个URL，而不要当做服务名
+  sleuth:
+    sampler:
+      probability: 1.0 #采样的百分比

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: service-order
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.149.101:8848 #nacos中心地址
+        file-extension: yaml # 配置文件格式
+        #指定共享配置，且支持动态刷新
+        ext-config:
+          - data-id: datasource.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: common.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+    alibaba:
+      seata:
+        tx-service-group: service-order  #要与配置文件中的vgroupMapping一致
+  profiles:
+    active: dev # 环境标识
+

@@ -7,7 +7,7 @@ spring:
     name: service-order
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.107.128.204/shop?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql:///shop?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: 123456
   jpa:
@@ -25,8 +25,20 @@ spring:
         # 与控制台交流的端口, 默认 8719
         port: 8719
         # web 控制台地址
-        dashboard: localhost:18080
+        dashboard: 192.168.149.101:18080
+  zipkin:
+    base-url: http://192.168.149.101:9411/
+    discoveryClientEnabled: false #让nacos把它当成一个URL，而不要当做服务名
+  sleuth:
+    sampler:
+      probability: 1.0 #采样的百分比
 feign:
   sentinel:
     # 开启sentinel支持
     enabled: true
+rocketmq:
+  name-server: 192.168.149.101:9876 #rocketMQ服务的地址
+  producer:
+    group: shop-order # 生产者组
+app:
+  customer: test

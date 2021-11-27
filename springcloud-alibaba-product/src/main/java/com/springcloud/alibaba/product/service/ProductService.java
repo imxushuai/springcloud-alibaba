@@ -14,4 +14,14 @@ public class ProductService {
     public Product findByPid(Integer pid) {
         return productRepository.findById(pid).orElse(null);
     }
+
+    public void reduceInventory(Integer pid, int num) {
+        Product product = this.findByPid(pid);
+
+        // 发生异常
+        int i = 1/0;
+
+        product.setStock(product.getStock() - num);
+        productRepository.save(product);
+    }
 }

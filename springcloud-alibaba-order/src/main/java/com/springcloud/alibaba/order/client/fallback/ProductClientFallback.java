@@ -14,4 +14,9 @@ public class ProductClientFallback implements ProductClient {
         // 具体的容错业务逻辑, 我这里直接返回空的商品对象
         return new Product();
     }
+
+    @Override
+    public void reduceInventory(Integer pid, int num) {
+
+    }
 }

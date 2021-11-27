@@ -18,13 +18,13 @@ public class AuthGlobalFilterFactory implements GlobalFilter, Ordered {
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        String token = exchange.getRequest().getQueryParams().getFirst("token");
+        /*String token = exchange.getRequest().getQueryParams().getFirst("token");
         if (StringUtils.isBlank(token)) {// 鉴权失败
             log.error("非法用户....");
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
 
             return exchange.getResponse().setComplete();
-        }
+        }*/
         // 鉴权成功, 执行一系列业务....
         return chain.filter(exchange);
     }
